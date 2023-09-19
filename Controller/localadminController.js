@@ -16,10 +16,11 @@ const path = require('path')
 const multer = require('multer')
 const company = require('../models/companyModel')
 const localadmin = require('../models/localadminModel')
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
 
-    cb(null, path.join(__dirname, '../../back-end/public/project_images'));
+    cb(null, path.join(__dirname, '../public/project_images'));
   },
   filename: (req, file, cb) => {
     const name = Date.now() + '-' + file.originalname;
