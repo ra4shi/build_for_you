@@ -6,6 +6,8 @@ const http = require('http');
 const { Server } = require('socket.io');
 const localadminController = require('./Controller/localadminController');
 
+ 
+
 // Environment config
 require('dotenv').config();
 
@@ -36,7 +38,8 @@ app.use(express.urlencoded({ limit: "50mb" }));
 const userRoute = require("./routes/userRoutes");
 const adminRoute = require("./routes/adminRoute");
 const localadminRoute = require('./routes/localadminRoute');
-app.use('/banner_images', express.static('../front-end/client/public/banner_images'));
+app.use('/banner_images', express.static('../back-end/public/banner_images'));
+app.use('/project_images',express.static('../back-end/public/project_images'))
 app.use("/api/user", userRoute);
 app.use("/api/admin", adminRoute);
 app.use("/api/localadmin", localadminRoute);
