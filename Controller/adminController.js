@@ -363,7 +363,7 @@ const admindashbord = async (req, res) => {
 
     const totalratings = ratings.length
 
-return res.status(200).json({ totalappointmentamount ,completedcontruction , totalcompany , totalproject , totalorders ,totalratings , message : " Datas Fetched Successfull" , success : true })
+return res.status(200).json({ totalappointmentamount ,completedcontruction , orders , totalcompany , totalproject , totalorders ,totalratings , message : " Datas Fetched Successfull" , success : true })
   
   } catch (error) {
     console.log(error)
