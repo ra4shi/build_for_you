@@ -198,7 +198,8 @@ const createBanner = async (req, res) => {
       }
 
       const { title, link, isActive } = req.body;
-      const image = req.file.filename; // Use req.file.filename to get the uploaded image filename
+      const image = req.file.filename; 
+      
 
       const banner = new Banner({
         title,
@@ -206,6 +207,8 @@ const createBanner = async (req, res) => {
         isActive,
         image,
       });
+
+      console.log(banner , " admin banner data")
 
       await banner.save();
       res.status(201).json({ success: true, message: 'Banner created successfully' });
@@ -262,7 +265,8 @@ const companyView = async (req, res) => {
     res.status(200).json({ projects, company, success: true, message: ' fetched success ' });
 
   } catch (error) {
-    console.log(error)
+    console.error('Error deleting company:', error);
+    return res.status(500).json({ message: 'Internal Server Error' , success : false });
   }
 }
 
@@ -285,7 +289,7 @@ const deletecompany = async (req, res) => {
   } catch (error) {
 
     console.error('Error deleting company:', error);
-    return res.status(500).json({ message: 'Internal Server Error' });
+    return res.status(500).json({ message: 'Internal Server Error' , success : false });
   }
 };
 
