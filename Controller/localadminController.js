@@ -12,41 +12,36 @@ const User = require('../models/userModel')
 const Rating = require('../models/ratingModel')
 
 
-const path = require('path')
-const multer = require('multer')
-const company = require('../models/companyModel')
-const localadmin = require('../models/localadminModel')
+const path = require('path');
+const multer = require('multer');
+const company = require('../models/companyModel');
+const localadmin = require('../models/localadminModel');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-
     cb(null, path.join(__dirname, '../public/project_images'));
   },
   filename: (req, file, cb) => {
     const name = Date.now() + '-' + file.originalname;
     cb(null, name);
-  }
+  },
 });
 
 const fileFilter = (req, file, cb) => {
-  if (
-    file.mimetype == "image/png" ||
-    file.mimetype == "image/jpg" ||
-    file.mimetype == "image/jpeg" ||
-    file.mimetype == "image/webp"
-  ) {
+  
+  const allowedMimeTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/webp'];
+
+  if (allowedMimeTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(null, false);
-    return cb(new Error("Only .png, .jpg, .jpeg, and .webp formats allowed!"));
+    cb(new Error('Only .png, .jpg, .jpeg, and .webp formats allowed!'));
   }
 };
 
 const multerInstance = multer({
   storage: storage,
-  fileFilter: fileFilter
+  fileFilter: fileFilter,
 });
-
 
 
 
