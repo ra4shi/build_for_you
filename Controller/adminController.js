@@ -191,6 +191,7 @@ const updateStatus = async (req, res) => {
 
 const createBanner = async (req, res) => {
   try {
+    console.log(" gygyugwu  guwdg uywg ")
     multerInstance.single('image')(req, res, async function (err) {
       if (err) {
         console.error('Error uploading image:', err);
