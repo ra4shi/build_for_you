@@ -202,7 +202,7 @@ const createBanner = async (req, res) => {
       console.log(req.files)
     
       const { title, link } = req.body;
-      const images = req.files.map(file => file.filename);
+     
       const banner = new Banner({
         title,
         link,
