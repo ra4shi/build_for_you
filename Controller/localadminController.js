@@ -963,7 +963,7 @@ console.log("dashbord data side")
 
   const projectcount =  project.length
 
-  const completedcontruction = await order.find( { contructionstatus : 'success'})  
+
 
     if (!company) {
 
@@ -973,7 +973,7 @@ console.log("dashbord data side")
     const ratingcount = ratings.length
     
 
-    return res.status(200).json({   order, company, ordercount, totalappointmentamount ,completedcontruction  ,projectcount,ratingcount, message: " dashboard data fetched", success: true });
+    return res.status(200).json({   order, company, ordercount, totalappointmentamount  ,projectcount,ratingcount, message: " dashboard data fetched", success: true });
 
 
 
