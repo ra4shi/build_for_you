@@ -32,7 +32,7 @@ router.post("/project-management", auth, adminController.approvel)
 
 router.post("/update-status", auth, adminController.updateStatus)
 
-router.post('/add-banner', auth, adminController.createBanner);
+router.post('/add-banner', auth ,  adminController.createBanner);
 
 router.post('/show-banner', auth, adminController.showbanner)
 

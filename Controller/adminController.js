@@ -191,25 +191,20 @@ const updateStatus = async (req, res) => {
 
 const createBanner = async (req, res) => {
   try {
-    console.log(" gygyugwu  guwdg uywg ")
-    multerInstance.single('image')(req, res, async function (err) {
+    multerInstance.array('image',1)(req, res, async function (err) {
       if (err) {
         console.error('Error uploading image:', err);
         return res.status(500).json({ error: 'Error uploading image' });
       }
-
+    
       const { title, link, isActive } = req.body;
-      const image = req.file.filename; 
-      
-
+      const images = req.files.map(file => file.filename);
       const banner = new Banner({
         title,
         link,
         isActive,
-        image,
+        image: images, // Use req.file.filename instead of req.files['banner'][0].filename
       });
-
-      console.log(banner , " admin banner data")
 
       await banner.save();
       res.status(201).json({ success: true, message: 'Banner created successfully' });
@@ -223,7 +218,7 @@ const createBanner = async (req, res) => {
 
 const showbanner = async (req, res) => {
   try {
-    console.log(1);
+    
     const banners = await Banner.find();
     res.status(200).json(banners);
   } catch (error) {

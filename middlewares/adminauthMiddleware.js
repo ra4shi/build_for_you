@@ -20,7 +20,7 @@ module.exports = async (req, res, next) => {
     
     jwt.verify(token, process.env.admin_Secret, (err, decoded) => {
       if (err) {
-        
+        console.log(" error midddle whare ")
         return res.status(401).send({ message: "Auth failed", success: false });
       } else {
         req.body.adminId = decoded.id;
@@ -30,6 +30,7 @@ module.exports = async (req, res, next) => {
       }
     });
   } catch (error) {
+    console.log(" error midddle whare ")
     console.log(error);
     return res
       .status(401)
