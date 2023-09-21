@@ -198,8 +198,6 @@ const createBanner = async (req, res) => {
         console.error('Error uploading image:', err);
         return res.status(500).json({ error: 'Error uploading image' });
       }
-
-      console.log(req.files)
     
       const { title, link } = req.body;
      
