@@ -925,7 +925,7 @@ const AppointmentDetails = async (req, res) => {
 }
 
 
-const dashboeard = async (req, res) => {
+const dashbord = async (req, res) => {
   try {
 
     const localId = req.body.localId
@@ -1017,6 +1017,6 @@ module.exports = {
   chatHistory,
   getChat,
   AppointmentDetails,
-  dashboeard,
+  dashbord,
   editcontructionstatus
 }
