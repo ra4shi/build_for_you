@@ -927,7 +927,7 @@ const AppointmentDetails = async (req, res) => {
 
 const dashbord = async (req, res) => {
   try {
-
+console.log("dashbord data side")
     const localId = req.body.localId
 
     const company = await Company.findOne({ company: localId })

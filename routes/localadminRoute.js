@@ -81,7 +81,7 @@ router.post('/chathistory' , localadminController.getChat)
 
 router.get('/appointmentdetails/:orderId' , auth , localadminController.AppointmentDetails)
 
-router.post('/dashboard' , auth , localadminController.dashboeard)
+router.post('/dashboard' , auth , localadminController.dashbord)
 
 module.exports = router;
 
