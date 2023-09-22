@@ -479,29 +479,26 @@ const showcompany = async (req, res) => {
 
 const addproject = async (req, res) => {
   try {
-    console.log(1)
     const company = await Company.findOne({ company: req.body.localId })
 
     if (!company) {
-      console.log(2)
+
       return res.status(500).send({ error: 'Company not found' })
 
     }
     const projectid = req.body.localId
     multerInstance.array('images', 3)(req, res, async function (err) {
       if (err) {
-        console.log(3)
         console.error('Error uploading images:', err);
         return res.status(500).json({ error: 'Error uploading images' });
       }
 
-      console.log(4)
+
       const { name, companyname, category, aboutproject, projectId, appointmentfee, projectcost } = req.body;
       const images = req.files.map(file => file.filename);
 
 
 
-      console.log(5)
 
       const newProject = new Project({
         name,
@@ -515,7 +512,8 @@ const addproject = async (req, res) => {
 
       });
       await newProject.save();
-console.log(newProject)
+
+
       res.status(201).json({ message: 'Project created successfully' });
     });
   } catch (error) {
