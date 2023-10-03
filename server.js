@@ -41,13 +41,11 @@ const localadminRoute = require('./routes/localadminRoute');
 // app.use('/public', express.static('./public/project_images'));
 app.use('/public', express.static('./public/project_images'));
 app.use('/banner', express.static('./public/banner_images'));
-app.use('/error', express.static('./src/components'))  
+
 app.use("/api/user", userRoute);
 app.use("/api/admin", adminRoute);
 app.use("/api/localadmin", localadminRoute);
-app.use((req, res) => {
-  res.status(404).sendFile(__dirname + "/error/ErrorPage.js");
-});
+
 
 // Create HTTP server and set up Socket.io
 const server = http.createServer(app);
