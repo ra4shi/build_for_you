@@ -23,9 +23,13 @@ module.exports = async (req, res, next) => {
         
         return res.status(401).send({ message: "Auth failed", success: false });
       } else {
-        req.body.userId = decoded.id;
+        if (decoded.role==='user') {
+          req.body.userId = decoded.id;
  
         next();
+        } else {
+          return res.status(401).send({ message: "Auth failed", success: false });
+        }
         
       }
     });
