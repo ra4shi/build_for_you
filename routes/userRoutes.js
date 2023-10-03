@@ -4,8 +4,10 @@ const router = express.Router();
 const auth = require("../middlewares/authMiddleware");
 const axios = require("axios")
 
-router.post('/edit-user-profile', auth, userController.edituser);
+router.use(express.static(__dirname + "../../front-end/client/src/components/ErrorPage"));
 
+
+router.post('/edit-user-profile', auth, userController.edituser);
 
 router.post('/resend-otp', userController.resendotp);
 
