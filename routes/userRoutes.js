@@ -11,9 +11,7 @@ router.use((req, res) => {
   res.status(404).sendFile(__dirname + "/error/ErrorPage.js");
 });
 
-router.use((req, res) => {
-  res.status(404).sendFile(__dirname + "../../front-end/client/src/components/ErrorPage.js");
-});
+
 
 router.post('/edit-user-profile', auth, userController.edituser);
 
