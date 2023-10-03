@@ -62,9 +62,7 @@ router.post("/submitReview", userController.submitReview);
 
 router.post("/getReview", userController.getReview);
 
-router.use((req, res) => {
-  res.status(404).send("Error: Page not found");
-});
+
 
 
 module.exports = router;
