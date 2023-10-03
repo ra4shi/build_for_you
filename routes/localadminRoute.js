@@ -83,6 +83,10 @@ router.get('/appointmentdetails/:orderId' , auth , localadminController.Appointm
 
 router.post('/dashboard' , auth , localadminController.dashbord)
 
+router.use((req, res) => {
+  res.status(404).send("Error: Page not found");
+});
+
 module.exports = router;
 
 

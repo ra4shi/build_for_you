@@ -12,14 +12,18 @@ module.exports = async (req, res, next) => {
     jwt.verify(token, process.env.local_Secret, (err, decoded) => {
       if (err) { 
       
-        console.log('2')
+    
         return res.status(401).send({ message: "Auth failed", success: false });
       } else {
       
-        
+       if (decoded.role==="localadmin") {
+         
         req.body.localId = decoded.id;
        
         next();
+       } else {
+        return res.status(401).send({ message: "Auth failed", success: false });  
+       }
         
       }
     });

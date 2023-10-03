@@ -249,7 +249,7 @@ const login = async (req, res) => {
         .status(200)
         .send({ message: "Password is incorrect", success: false });
     } else {
-      const token = jwt.sign({ id: localadmin._id }, process.env.local_Secret, {
+      const token = jwt.sign({ id: localadmin._id , role : "localadmin" }, process.env.local_Secret, {
         expiresIn: "1d",
       });
       res

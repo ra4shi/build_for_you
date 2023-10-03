@@ -4,43 +4,6 @@ const router = express.Router();
 const auth = require("../middlewares/authMiddleware");
 const axios = require("axios")
 
-
-
-const path = require('path');
-const multer = require('multer');
-const User = require('../models/userModel');
-
-const storage = multer.diskStorage({
-
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '../../front-end/client/public/project_images'));
-  },
-  filename: (req, file, cb) => {
-    const name = Date.now() + '-' + file.originalname;
-    cb(null, name);
-  }
-});
-
-const fileFilter = (req, file, cb) => {
-  if (
-    file.mimetype == "image/png" ||
-    file.mimetype == "image/jpg" ||
-    file.mimetype == "image/jpeg" ||
-    file.mimetype == "image/webp"
-  ) {
-    cb(null, true);
-  } else {
-    cb(null, false);
-    return cb(new Error("Only .png, .jpg, .jpeg, and .webp formats allowed!"));
-  }
-};
-
-const multerInstance = multer({
-  storage: storage,
-  fileFilter: fileFilter
-});
-
-
 router.post('/edit-user-profile', auth, userController.edituser);
 
 
@@ -97,6 +60,10 @@ router.post('/getchathistory' , userController.getChat)
 router.post("/submitReview", userController.submitReview);
 
 router.post("/getReview", userController.getReview);
+
+router.use((req, res) => {
+  res.status(404).send("Error: Page not found");
+});
 
 
 module.exports = router;

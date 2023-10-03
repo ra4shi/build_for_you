@@ -46,4 +46,8 @@ router.get('/projectview/:projectId', auth , adminController.projectView)
 
 router.post('/admindashbord' , auth , adminController.admindashbord)
 
+router.use((req, res) => {
+    res.status(404).send("Error: Page not found");
+  });
+
 module.exports = router;
