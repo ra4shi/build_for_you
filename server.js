@@ -57,10 +57,10 @@ const io = new Server(server, {
 const port = process.env.PORT || 5000;
 
 io.on("connect", (socket) => {
-  console.log("User connected:");
+  
   socket.on("join-room", (data) => {
     socket.join(data);
-    console.log(`user with id: ${socket.id} joined room: ${data}`);
+
   });
 
   socket.on("send_message", async (data) => {

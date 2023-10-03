@@ -22,8 +22,6 @@ router.post('/resetPassword', userController.resetPassword);
 
 router.post("/get-user-info-by-id", auth, userController.getuserinfo)
 
-
-
 router.post("/uploadImage", auth, userController.uploadimage)
 
 router.post("/banners", userController.loadBanner)
